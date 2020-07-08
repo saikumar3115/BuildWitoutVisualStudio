@@ -18,7 +18,12 @@ function SystemLayer
     )
     process
     {
-        
+        Set-Location $path
+        git fetch 
+
+        Set-Location $path
+        git reset --hard origin/master
+  
   
       $startBuildtime=(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")
   
