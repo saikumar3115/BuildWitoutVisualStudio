@@ -18,11 +18,17 @@ function SystemLayer
     )
     process
     {
+        Write-Host "Fetching Latest Changes " -ForegroundColor DarkRed
         Set-Location $path
         git fetch 
-
+        
+        Write-Host "Resetting to origin " -ForegroundColor DarkRed
         Set-Location $path
         git reset --hard origin/master
+          
+          Write-Host "Done With Git " -ForegroundColor DarkRed
+
+          Write-Host "Your Build Process is starting Now" -ForegroundColor DarkRed
   
   
       $startBuildtime=(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")
@@ -30,10 +36,6 @@ function SystemLayer
       $ArchiveFolder="binGlobe.Net-"+$startBuildtime
       
       $ArchiveSource="bin-"+$startBuildtime
-  
-     [bool]$CreateFolder=true
-  
-      Write-Host "Your Build Process is started " -ForegroundColor DarkRed
        
       $msBuildExe = 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\amd64\msbuild.exe'
   
