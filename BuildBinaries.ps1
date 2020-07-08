@@ -109,12 +109,12 @@ function SystemLayer
                 
                 New-Item -Path $Destination -Name $ArchiveFolder -ItemType "directory"
          
-                Copy-Item -Force -Path $Destination\binGlobe.Net\*.* -Destination $Destination\$ArchiveFolder\ -Recurse
+                Copy-Item -Path $Destination\binGlobe.Net\* -Destination $Destination\$ArchiveFolder\  -Force -Recurse -Verbose 
                 
                 }
         
 
-           Remove-Item -Force -Path $Destination\binGlobe.Net\*.* -Recurse
+           Remove-Item -Force -Path $Destination\binGlobe.Net\* -Recurse
          
         if (-not (Test-Path -Path $Destination\binGlobe.Net\ -PathType Container)){
             try {
@@ -126,7 +126,7 @@ function SystemLayer
             
           }
          
-           Copy-Item -Force -Path $path\bin\*.* -Destination $Destination\binGlobe.Net\ -Recurse 
+           Copy-Item -Force -Path $path\bin\* -Destination $Destination\binGlobe.Net\  -Force -Recurse -Verbose 
            Write-Host "Binaries copied" -foregroundcolor green
 
        }
